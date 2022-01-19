@@ -1,0 +1,93 @@
+<section class="page-section cta">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <div class="cta-inner bg-faded text-center rounded">
+                    <h2 class="section-heading mb-5">
+                        <span class="section-heading-upper">Come On In</span>
+                        <span class="section-heading-lower">Admin Account Space</span>
+                    </h2>
+                    
+                    <table class="table mb-5 text-left mx-auto">
+                        <thead>
+                          <tr class="inline-table d-flex"> 
+                            <th >Username</th>
+                            <th class="ms-auto">Mail</th>
+                            <th class="ms-auto">Password</th>
+                            <th class="ms-auto">FirstName</th>
+                            <th class="ms-auto">LastName</th>
+                            <th class="ms-auto">D/U</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                         <tr class="inline-table d-flex" *ngFor="let acc of accounts" >
+                            <td>{{acc.username}}</td>
+                            <td class="ms-auto">{{acc.mail}}</td>
+                            <td class="ms-auto">{{acc.password}}</td>
+                            <td class="ms-auto">{{acc.firstName}}</td>
+                            <td class="ms-auto">{{acc.lastName}}</td>
+                            <td class="ms-auto"> 
+                                <div  style="display: inline-table;" class="intro-button mx-auto">
+                                    <button class="btn btn-primary" (click)= update(acc)>Update</button>
+                                </div>
+                                <div style="display: inline-table;" class="intro-button mx-auto">
+                                    <button class="btn btn-primary " (click)= delete(acc)>Delete</button>
+                                </div>  
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                    <p class="address mb-5">
+                        <em>
+                            <div style="display: inline-table;" class="intro-button mx-auto">
+                                <button  class="btn btn-primary btn-xl" (click)= show() >Add Account</button>
+                            </div>
+                        </em>
+                    </p>
+                 <form [formGroup]="addForm" (ngSubmit)="addStudent()" *ngIf = "x">
+                        <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                               UserName
+                                <span class="ms-auto">
+                                     <input formControlName="username" type="text" class="form-control" placeholder="Enter username">
+                                </span>
+                            </li>
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                                Mail
+                                <span class="ms-auto">
+                                     <input formControlName="mail" type="text" class="form-control" placeholder="Enter mail">
+                                </span>
+                            </li>
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                                Password
+                                <span class="ms-auto">
+                                     <input formControlName="password" type="text" class="form-control" placeholder="Enter password">
+                                </span>
+                            </li>
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                              FirstName
+                                <span class="ms-auto">
+                                     <input formControlName="firstName" type="text" class="form-control" placeholder="Enter firstname">
+                                </span>
+                            </li>
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                                LastName
+                                <span class="ms-auto">
+                                     <input formControlName="LastName" type="text" class="form-control" placeholder="Enter lastname">
+                                </span>
+                            </li>
+                            <li class="list-unstyled-item list-hours-item d-flex">
+                                Phone Number
+                                <span class="ms-auto">
+                                     <input formControlName="phone" type="text" class="form-control" placeholder="Enter phone">
+                                </span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary btn-xl" [disabled]="addForm.invalid"  type="submit" >Submit</button>
+                    </form>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
